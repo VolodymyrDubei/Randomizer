@@ -25,12 +25,17 @@ class ViewController: UIViewController {
       
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let settingsVC = segue.destination as? SettingsViewController else { return }
+        settingsVC.minValue = minRange.text
+        settingsVC.maxValue = maxRange.text
+    }
     
     @IBAction func getResultAction() {
-        let minValue = Int(minRange.text ?? "") ?? 0
-        let maxValue = Int(maxRange.text ?? "") ?? 100
+        let minimumValue = Int(minRange.text ?? "") ?? 0
+        let maximumValue = Int(maxRange.text ?? "") ?? 100
         
-        resultRandom.text = String(Int.random(in: minValue...maxValue))
+        resultRandom.text = String(Int.random(in: minimumValue...maximumValue))
     }
     
 
