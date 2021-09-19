@@ -38,6 +38,11 @@ class ViewController: UIViewController {
         resultRandom.text = String(Int.random(in: minimumValue...maximumValue))
     }
     
-
+    @IBAction func unwind(for segue: UIStoryboardSegue) {
+        guard let settingsVC = segue.source as? SettingsViewController else { return }
+        minRange.text = settingsVC.minRangeTF.text
+        maxRange.text = settingsVC.maxRangeTF.text
+    }
+    
 }
 
